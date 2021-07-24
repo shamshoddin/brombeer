@@ -3,9 +3,9 @@ server:
 spring:
   application:
     name: ppms-sample
-  data:
-    mongodb:
-      uri: mongodb://localhost:27017/peronal-profile?retryWrites=true
+#  data:
+#    mongodb:
+#      uri: mongodb://localhost:27017/peronal-profile?retryWrites=true
 
   # Embedded ActiveMQ Configuration Example
   activemq:

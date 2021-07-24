@@ -25,4 +25,13 @@ public class OrderConsumer {
         log.info("received <" + order + ">");
     }
 
+    @JmsListener(destination = ActiveMQConfig.CURRENCY_FMC_TOPIC, containerFactory = "topicListenerFactory")
+    public void receiveTopicMessage(@Payload CurrencyMangement currencyMangement,
+                                    @Headers MessageHeaders headers,
+                                    Message message,
+                                    Session session) {
+
+        log.info("received <" + currencyMangement + ">");
+    }
+
 }

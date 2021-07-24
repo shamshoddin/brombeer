@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
+import static com.brombeer.integration.ActiveMQConfig.CURRENCY_FMC_TOPIC;
 import static com.brombeer.integration.ActiveMQConfig.ORDER_TOPIC;
 
 @Service
@@ -19,6 +20,11 @@ public class OrderSender {
     public void sendTopic(Order order) {
         log.info("sending with convertAndSend() to queue <" + order + ">");
         jmsTemplate.convertAndSend(ORDER_TOPIC, order);
+    }
+
+    public void sendTopic(CurrencyMangement currencyMangement) {
+        log.info("sending with convertAndSend() to queue <" + currencyMangement + ">");
+        jmsTemplate.convertAndSend(CURRENCY_FMC_TOPIC, currencyMangement);
     }
 
 }

@@ -19,6 +19,7 @@ import javax.jms.ConnectionFactory;
 public class ActiveMQConfig {
 
     public static final String ORDER_TOPIC = "order-topic";
+    public static final String CURRENCY_FMC_TOPIC = "currency-fmc-topic";
 
     @Bean
     @SuppressWarnings("SpringJavaAutowiringInspection")

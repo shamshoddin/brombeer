@@ -1,12 +1,12 @@
 package com.brombeer.controller;
 
+import com.brombeer.integration.CurrencyMangement;
 import com.brombeer.integration.Order;
 import com.brombeer.integration.OrderSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +17,7 @@ public class PPMSController
     @Autowired
     private OrderSender orderSender;
 
-    @RequestMapping("/")
+    @GetMapping("/")
     public Order personalProfile()
     {
         log.info("Spring Boot ActiveMQ Publish Subscribe Topic Configuration Example");
@@ -31,5 +31,18 @@ public class PPMSController
 
 
         return order;
+    }
+    @PostMapping("/add")
+    public CurrencyMangement personalProfile(@RequestBody CurrencyMangement currencyMangement)
+    {
+        log.info("Spring Boot ActiveMQ Publish Subscribe Topic Configuration Example");
+
+       orderSender.sendTopic(currencyMangement);
+
+
+        log.info("Waiting for all ActiveMQ JMS Messages to be consumed");
+
+
+        return currencyMangement;
     }
 }
