@@ -45,4 +45,12 @@ public class PPMSController
 
         return currencyMangement;
     }
+
+    @PostMapping("/ppms/add")
+    public CurrencyMangement ppms(@RequestBody CurrencyMangement currencyMangement)
+    {
+      System.out.println("CurrencyManagement:"+currencyMangement);
+
+        return currencyMangement;
+    }
 }
